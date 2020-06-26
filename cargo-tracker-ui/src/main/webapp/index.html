@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>Cargo Tracker</title>
+    <script src="js/cargo-information.js"></script>
+</head>
+
+<body>
+    <h1>Cargo Tracker</h1>
+    <form>
+        <label for="cargo-tracking-id">Cargo Tracking ID:</label><br>
+        <input type="text" id="cargo-tracking-id"  name="cargo-tracking-id"><br>
+    </form>
+
+    <button type="submit" onclick="getCargoInformation()">Search</button>
+
+	<h2 id="cargo-information"></h2>
+</body>
+</html>
