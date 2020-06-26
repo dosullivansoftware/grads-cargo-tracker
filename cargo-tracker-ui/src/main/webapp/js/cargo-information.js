@@ -1,13 +1,14 @@
 function getCargoInformation() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-       if (this.readyState == 4 && this.status == 200) {
-           document.getElementById('cargo-information').textContent = this.responseText;
-       } else {
-    	   document.getElementById('cargo-information').textContent = "No cargo with specified tracking id.";
-       }
-  };
-  var cargoTrackingId = document.getElementById('cargo-tracking-id').value;
-  xhttp.open("GET", "/cargo-tracker-web/cargo/" + cargoTrackingId, true);
-  xhttp.send(null);
+  document.getElementById('cargo-information').textContent = "Fetching cargo informtion...";
+    var cargoTrackingId = document.getElementById('cargo-tracking-id').value;
+    fetchPromise('/cargo-tracker-web/cargo/' + cargoTrackingId).then(cargo => {
+        document.getElementById('cargo-information').textContent = JSON.stringify(cargo);
+    }).catch(error => {
+        document.getElementById('cargo-information').textContent = "No cargo with specified tracking id.";
+    });
+}
+
+async function fetchPromise(uri) {
+  const response = await fetch(uri);
+  return await response.json();
 }

@@ -7,7 +7,7 @@
     <persistence-unit name="CargoTrackerUnit">
         <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
         <properties>
-            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/> <!--  none, create, drop -->
+            <property name="javax.persistence.schema-generation.database.action" value="create"/> <!--  none, create, drop -->
             <property name="javax.persistence.sql-load-script-source" value="META-INF/seed.sql"/>
             
             <property name="jboss.as.jpa.providerModule" value="org.hibernate:5.3"/>
